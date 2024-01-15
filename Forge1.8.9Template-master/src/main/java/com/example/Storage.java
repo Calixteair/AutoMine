@@ -15,22 +15,6 @@ public class Storage {
 
     public ArrayList<BlockPos> arrayBlockPostion = new ArrayList<BlockPos>();
 
-    public ArrayList<Waypoint> arrayWaypoint = new ArrayList<Waypoint>();
-
-
-    public void addWaypoint(Waypoint waypoint){
-        arrayWaypoint.add(waypoint);
-    }
-
-    public void addWaypointAtIndex(int index, Waypoint waypoint){
-        arrayWaypoint.add(index, waypoint);
-    }
-
-    public void removeWaypoint(String index){
-        int indexInt = Integer.parseInt(index);
-        arrayWaypoint.remove(indexInt);
-    }
-
     public void addBlock(BlockPos blockPos){
         arrayBlockPostion.add(blockPos);
     }

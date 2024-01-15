@@ -24,9 +24,6 @@ public class ExampleMod {
 
     public static Storage store = new Storage();
 
-    public static WaypointRenderer waypointRenderer = new WaypointRenderer(store);
-
-    public static CustomGuiIngame customGuiIngame = new CustomGuiIngame(Minecraft.getMinecraft(), waypointRenderer);
 
 
 
@@ -35,26 +32,17 @@ public class ExampleMod {
     public void preInit(FMLPreInitializationEvent event) {
         // Enregistrez votre commande lors de l'initialisation
         ClientCommandHandler.instance.registerCommand(new com.example.CommandeFind(store));
-        ClientCommandHandler.instance.registerCommand(new com.example.CommandeGem(store));
-        ClientCommandHandler.instance.registerCommand(new com.example.CommandWaypoint(store));
-    }
+        ClientCommandHandler.instance.registerCommand(new com.example.CommandeGem(store));}
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
 
         MinecraftForge.EVENT_BUS.register(new CommandeFind(store));
         MinecraftForge.EVENT_BUS.register(new CommandeGem(store));
-        MinecraftForge.EVENT_BUS.register(new CommandWaypoint(store));
-        MinecraftForge.EVENT_BUS.register(new WaypointRenderer(store));
         MinecraftForge.EVENT_BUS.register(this);
 
     }
 
-    @SubscribeEvent
-    public void onRenderGameOverlay(RenderGameOverlayEvent.Post event) {
-        // Appeler la méthode renderWaypoints pour afficher les waypoints
-        waypointRenderer.renderWaypoints();
-    }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
