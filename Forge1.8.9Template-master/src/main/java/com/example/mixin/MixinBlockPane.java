@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Block.class)
 public class MixinBlockPane {
+    
 
     @Inject(method = "getSelectedBoundingBox", at = @At("HEAD"), cancellable = true)
     public void getSelectedBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos, CallbackInfoReturnable<AxisAlignedBB> callbackInfo) {
